@@ -32,7 +32,7 @@ Lai sekmīgi palaistu izstrādāto tīmekļa lietotni, kas sastāv no backend (E
 5. Izveidojiet noklusējuma administratora lietotāju ar komandu:
 
     ```bash
-    node createAdmin.js <username> <password>
+    node createAdmin.js
     ```
 
 6. Sāciet serveri:
