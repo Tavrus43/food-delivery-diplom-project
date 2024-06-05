@@ -1,0 +1,3 @@
+[submodule "frontend_v2"]
+    path = frontend_v2
+    url = <https://github.com/Tavrus43/frontend_v2.git>

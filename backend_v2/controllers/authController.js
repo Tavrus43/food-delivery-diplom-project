@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const uploadImage = require('../utils/cloudinary');
 
-const DEFAULT_AVATAR_URL = 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon'; // Укажите URL изображения по умолчанию
+const DEFAULT_AVATAR_URL = 'http://www.gravatar.com/avatar/3b3be63a4c2a439b013787725dfce802?d=identicon'; 
 
 exports.register = async (req, res) => {
   const { username, password, contactInfo } = req.body;
