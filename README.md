@@ -36,4 +36,7 @@ Frontend serveris: http://localhost:3000
 Piezīme
 Sistēma ir aizpildīta ar nelielu daudzumu datu, lai tā saglabātu uzskatāmu izskatu. Ir izveidots 
 viens noklusējuma superlietotājs:
-Ielogošanās dati ((lietotājvārds: admin | parole: adminpassword)
+Ielogošanās dati ((lietotājvārds: admin | parole: adminpassword).
+Testa Datu Aizpildīšana
+Lai aizpildītu sistēmu ar testa datiem, varat palaist failu populateTestData.js:
+node populateTestData.js
