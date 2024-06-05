@@ -12,7 +12,7 @@ Lejupielāde.
 ## 3. Backend (Express) Instalācija
 1. Atveriet komandu rindas logu (Command Prompt) vai termināli.
 2. Izmantojot cd komandu, pārejiet uz lejupielādēto repozitoriju, piemēram: cd 
-C:/<lejupielādētā repozitorija nosaukums>/backend.
+C:/<lejupielādētā repozitorija nosaukums>/backend_v2.
 3. Instalējiet visas nepieciešamās atkarības, izmantojot npm: npm install.
 ## 4. Nodrošiniet, ka MongoDB serveris darbojas, un konfigurējiet .env failu ar 
 nepieciešamajiem iestatījumiem, kurus var dabūt ar šiem saitēm.
@@ -26,7 +26,7 @@ Stripe | Financial Infrastructure to Grow Your Revenue
 ## 4. Frontend (React) Instalācija
 1. Atveriet jaunu komandu rindas logu (Command Prompt) vai termināli.
 2. Izmantojot cd komandu, pārejiet uz lejupielādēto repozitoriju, piemēram: cd 
-C:/<lejupielādētā repozitorija nosaukums>/frontend.
+C:/<lejupielādētā repozitorija nosaukums>/frontend_v2.
 3. Instalējiet visas nepieciešamās atkarības, izmantojot npm: npm install.
 4. Sāciet React izstrādes serveri:
 ## Tīmekļa Lietotnes Piekļuve
