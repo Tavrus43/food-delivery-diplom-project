@@ -71,7 +71,7 @@ Sistēma ir aizpildīta ar nelielu daudzumu datu, lai tā saglabātu uzskatāmu 
 - Ielogošanās dati: lietotājvārds: `admin` | parole: `adminpassword`
 
 ## Testa Datu Aizpildīšana
-Lai aizpildītu sistēmu ar testa datiem, varat palaist failu `populateTestData.js`:
+Lai aizpildītu sistēmu ar testa datiem, varat palaist failu `FillDB.js`:
 
 ```bash
-node populateTestData.js
+node FillDB.js
