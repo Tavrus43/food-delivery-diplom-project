@@ -5,14 +5,10 @@ body {
   @apply font-sans;
 }
 
-input[type="text"] {
-  background-color: #2D3748; 
-  color: #FFFFFF;
-}
 
 input[type="text"]:focus {
-  background-color: #2D3748;
-  color: #FFFFFF; 
+  background-color: #FFFFFF;
+  color: #2D3748; 
   outline: none;
   box-shadow: 0 0 0 2px #4299E1; 
 }

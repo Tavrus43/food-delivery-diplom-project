@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const { Faker, lv } = require('@faker-js/faker');
 
 const faker = new Faker({ locale: [lv] });
@@ -10,14 +11,16 @@ const Review = require('./models/Review');
 const UserAddress = require('./models/UserAddress');
 const Promo = require('./models/Promo');
 
-mongoose.connect('mongodb+srv://admin:RYmFAc1LP0wRFJhE@diplomdarbs-food-orderi.zgtvuw5.mongodb.net/?retryWrites=true&w=majority&appName=diplomdarbs-food-ordering', { useNewUrlParser: true, useUnifiedTopology: true });
+require('dotenv').config();
+const connectDB = require('./config/db');
+
+connectDB();
 
 const cuisinesOptions = ['Itāļu', 'Ķīniešu', 'Indiešu', 'Meksikāņu', 'Japāņu'];
 
 async function seedDatabase() {
   await mongoose.connection.dropDatabase();
 
-  // Create Users
   const users = [];
   for (let i = 0; i < 10; i++) {
     const user = new User({
@@ -32,7 +35,6 @@ async function seedDatabase() {
     users.push(user);
   }
 
-  // Create Restaurants in Rezekne
   const restaurants = [];
   for (let i = 0; i < 5; i++) {
     const restaurant = new Restaurant({
@@ -41,13 +43,12 @@ async function seedDatabase() {
       location: 'Rezekne, Latvia',
       avatar: faker.image.food() + `?random=${faker.datatype.uuid()}`,
       description: faker.lorem.paragraph(),
-      cuisines: faker.helpers.arrayElements(cuisinesOptions, faker.datatype.number({ min: 1, max: cuisinesOptions.length })) // Добавлено случайное количество кухонь
+      cuisines: faker.helpers.arrayElements(cuisinesOptions, faker.datatype.number({ min: 1, max: cuisinesOptions.length }))
     });
     await restaurant.save();
     restaurants.push(restaurant);
   }
 
-  // Create Menu Items
   const menuItems = [];
   for (let i = 0; i < 20; i++) {
     const menuItem = new MenuItem({
@@ -61,14 +62,12 @@ async function seedDatabase() {
     menuItems.push(menuItem);
   }
 
-  // Add Menu Items to Restaurants
   for (let restaurant of restaurants) {
     const items = faker.helpers.shuffle(menuItems).slice(0, 5);
     restaurant.menu = items.map(item => item._id);
     await restaurant.save();
   }
 
-  // Create Reviews
   for (let i = 0; i < 30; i++) {
     const review = new Review({
       userId: faker.helpers.arrayElement(users)._id,
@@ -79,7 +78,6 @@ async function seedDatabase() {
     await review.save();
   }
 
-  // Create User Addresses
   for (let user of users) {
     const address = new UserAddress({
       user: user._id,
@@ -90,7 +88,6 @@ async function seedDatabase() {
     await address.save();
   }
 
-  // Create Promos
   for (let i = 0; i < 10; i++) {
     const promo = new Promo({
       restaurantId: faker.helpers.arrayElement(restaurants)._id,
@@ -103,7 +100,35 @@ async function seedDatabase() {
   }
 
   console.log('Database seeded!');
+  await createAdmin(); 
   mongoose.disconnect();
 }
+
+const createAdmin = async () => {
+  const username = 'admin';
+  const password = 'adminpassword';
+  const userType = 'admin';
+  const contactInfo = 'admin@example.com';
+
+  try {
+    let user = await User.findOne({ username });
+    if (user) {
+      console.log('Admin already exists');
+      return;
+    }
+
+    user = new User({
+      username,
+      userType,
+      contactInfo,
+      passwordHash: await bcrypt.hash(password, 10),
+    });
+
+    await user.save();
+    console.log('Admin created successfully');
+  } catch (err) {
+    console.error(err.message);
+  }
+};
 
 seedDatabase();

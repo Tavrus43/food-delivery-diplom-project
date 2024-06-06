@@ -85,10 +85,6 @@ const RestaurantList = () => {
     return <p>Notiek ielāde...</p>;
   }
 
-  if (restaurants.length === 0) {
-    return <p>Restorāni nav pieejami.</p>;
-  }
-
   const handleNextPage = () => {
     if (page < totalPages) {
       setPage(prevPage => prevPage + 1);
@@ -149,23 +145,27 @@ const RestaurantList = () => {
         </label>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {restaurants.map(restaurant => (
-          <div key={restaurant._id} className="bg-gray-700 text-white rounded-lg shadow-lg overflow-hidden flex flex-col">
-            <img src={restaurant.avatar} alt={restaurant.name} className="w-full h-40 object-cover" />
-            <div className="flex flex-col justify-between flex-grow p-4">
-              <div>
-                <h2 className="text-xl font-bold mb-2">{restaurant.name}</h2>
-                <p className="text-gray-400 mb-4"><FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2"/>{restaurant.location}</p>
-                <p className="mb-4">{restaurant.description}</p>
-              </div>
-              <div>
-                <Link to={`/restaurants/${restaurant._id}`} className="inline-block bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-900 transition">
-                  Skatīt Ēdienkarti
-                </Link>               
+        {restaurants.length > 0 ? (
+          restaurants.map(restaurant => (
+            <div key={restaurant._id} className="bg-gray-700 text-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+              <img src={restaurant.avatar} alt={restaurant.name} className="w-full h-40 object-cover" />
+              <div className="flex flex-col justify-between flex-grow p-4">
+                <div>
+                  <h2 className="text-xl font-bold mb-2">{restaurant.name}</h2>
+                  <p className="text-gray-400 mb-4"><FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2"/>{restaurant.location}</p>
+                  <p className="mb-4">{restaurant.description}</p>
+                </div>
+                <div>
+                  <Link to={`/restaurants/${restaurant._id}`} className="inline-block bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-900 transition">
+                    Skatīt Ēdienkarti
+                  </Link>               
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-center text-gray-500 col-span-3">Restorāni nav pieejami.</p>
+        )}
       </div>
       <div className="flex justify-between mt-8">
         <button

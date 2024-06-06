@@ -25,6 +25,8 @@ import OwnerRestaurantForm from './components/Owner/OwnerRestaurantForm';
 import OwnerMenuForm from './components/Owner/OwnerMenuForm';
 import OwnerOrders from './components/Owner/OwnerOrders';
 import OrderForm from './components/Order/OrderForm';
+import NotFound from './pages/NotFound';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const stripePromise = loadStripe('pk_test_51PKImzP9uW9LTOLwiXmEeZGO7bmg1zUp04g0keyD65yTX9ml9hfx0UMYR5xHfveNW4Q0CFmKFT2rqVNt5hF4PQhN006BjcSkZM');
  
@@ -36,6 +38,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
+    <ErrorBoundary>
     <div className="flex flex-col min-h-screen bg-gray-800">
       <Navbar />
       <div className="flex-grow">
@@ -55,10 +58,12 @@ const App = () => {
           <Route path="/orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/restaurants/:id" element={<RestaurantPage />} />
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
       </div>
       <Footer />
     </div>
+    </ErrorBoundary>
   );
 };
 

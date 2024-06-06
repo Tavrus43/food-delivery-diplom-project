@@ -46,6 +46,7 @@ const OrderForm = () => {
 
       const { id: sessionId } = res.data;
       const { error } = await stripe.redirectToCheckout({ sessionId });
+      
 
       if (error) {
         console.error(error);
