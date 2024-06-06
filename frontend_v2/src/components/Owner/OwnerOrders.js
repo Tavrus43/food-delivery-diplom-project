@@ -39,7 +39,7 @@ const OwnerOrders = () => {
           placeholder="Meklēt pēc Pasūtījuma ID"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-l-md"
+          className="w-full p-2 border text-gray-700 border-gray-300 rounded-l-md"
         />
         <button className="p-2 bg-blue-600 text-white rounded-r-md">
           <FontAwesomeIcon icon={faSearch} />

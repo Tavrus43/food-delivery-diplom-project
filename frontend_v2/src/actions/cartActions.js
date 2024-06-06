@@ -20,8 +20,12 @@ export const addToCart = (item) => (dispatch, getState) => {
   });
 
   if (!alreadyExists) {
-    cartItems.push({ ...item, count: 1 });
+    const price = item.discount 
+      ? Number((item.price - (item.price * item.discount / 100)).toFixed(2))
+      : Number(item.price.toFixed(2));
+    cartItems.push({ ...item, price, count: 1 });
   }
+
 
   dispatch({
     type: ADD_TO_CART,

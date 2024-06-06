@@ -15,7 +15,8 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    width: '50%',
+    width: '25%',
+    backgroundColor: '#2D3748',
   },
 };
 
@@ -105,7 +106,7 @@ const AdminPanel = () => {
               placeholder="Meklēt lietotājus..."
               value={search}
               onChange={handleSearch}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full p-2 border text-gray-700 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
             <FontAwesomeIcon icon={faSearch} className="absolute top-3 right-3 text-gray-500" />
           </div>
@@ -170,7 +171,7 @@ const AdminPanel = () => {
               placeholder="Meklēt pasūtījumus pēc klienta..."
               value={orderSearch}
               onChange={handleOrderSearch}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full p-2 border text-gray-700 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
             <FontAwesomeIcon icon={faSearch} className="absolute top-3 right-3 text-gray-500" />
           </div>

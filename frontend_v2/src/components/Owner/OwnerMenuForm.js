@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
-import { getOwnerMenuItems } from '../../actions/ownerActions';
+import { getOwnerMenuItems, getOwnerRestaurant } from '../../actions/ownerActions';
 import api from '../../utils/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus, faTag } from '@fortawesome/free-solid-svg-icons';
@@ -36,7 +36,8 @@ const OwnerMenuForm = () => {
   const [currentPromoItem, setCurrentPromoItem] = useState(null);
 
   useEffect(() => {
-    if (restaurant._id) {
+    if (restaurant._id) { 
+      dispatch(getOwnerRestaurant());
       dispatch(getOwnerMenuItems(restaurant._id));
     }
   }, [dispatch, restaurant._id]);

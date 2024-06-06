@@ -22,7 +22,7 @@ exports.createPromo = async (req, res) => {
 exports.getPromos = async (req, res) => {
   try {
     const promos = await Promo.find()
-      .populate('menuItemId', 'name imageUrl description')
+      .populate('menuItemId', 'name imageUrl description price')
       .populate('restaurantId', 'name');
     res.json(promos);
   } catch (err) {

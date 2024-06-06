@@ -16,6 +16,7 @@ const Navbar = () => {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
 
   const handleLogout = () => {
+    localStorage.removeItem('cartItems');
     dispatch(logout());
     navigate('/login');
   };
